@@ -6,12 +6,16 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="25">
+            Spacing="25"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
             <Image
                 Source="frander.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
-                SemanticProperties.Description="your friendly Fränd stearing blankly back at you" />
+                SemanticProperties.Description="your friendly Fränd stearing blankly back at you" 
+
+                />
 
             <Label
                 Text="Hello, World!"
