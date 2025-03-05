@@ -1,25 +1,27 @@
-﻿namespace Fränder
+﻿using Fränder.Game;
+
+namespace Fränder
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private NeedsLogic needsLogic = new NeedsLogic();
 
         public MainPage()
         {
             InitializeComponent();
+            needsLogic.OnHungerChanged += UpdateHungerImage;
+            UpdateHungerImage();
         }
-
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void UpdateHungerImage()
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                hungerImage.Source = needsLogic.GetImage();
+            });
         }
+
+
+
 
 
     }

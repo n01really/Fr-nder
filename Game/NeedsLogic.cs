@@ -35,10 +35,22 @@ namespace Fränder.Game
         //}
 
         private int health = 100;
-        private int hunger = 100;
+        public int hunger = 100;
         private int sleepines = 0;
         private int fun = 100;
         private int clenlines = 100;
+
+        private Timer hungerTimer;
+
+        public event Action OnHungerChanged;
+        
+        public NeedsLogic()
+        {
+            hungerTimer = new Timer(1000);
+            hungerTimer.Elapsed += (sender, e) =>
+            DecreasseHunger();
+            hungerTimer.Start();
+        }
 
         public void Health()
         {
@@ -49,13 +61,12 @@ namespace Fränder.Game
             }
         }
 
-        public void Hunger()
+        public void DecreasseHunger()
         {
             hunger -= 1;
-            if (hunger < 0)
-            {
-                hunger = 0;
-            }
+            if (hunger < 0) hunger = 0;
+                OnHungerChanged?.Invoke();
+            
         }
 
         public void Sleep()
@@ -83,6 +94,19 @@ namespace Fränder.Game
             {
                 clenlines = 0;
             }
+        }
+
+        public string GetImage()
+        {
+            if (hunger >= 67)
+                return "hunger.png";
+            
+            else if (hunger == 34)
+                return "hunger_med.png";
+            else if (hunger == 10)
+                return "hunger_low.png";
+            else  
+                return "hunger_empty.png";
         }
     }
 
