@@ -42,10 +42,11 @@ namespace Fränder.Game
 
         private Timer hungerTimer;
         private Timer cleanTimer;
+        private Timer healthTimer;
 
         public event Action OnHungerChanged;
         public event Action OnCleanChanged;
-
+        public event Action OnHealthChanged;
         public NeedsLogic()
         {
             hungerTimer = new Timer(1000);
@@ -53,21 +54,29 @@ namespace Fränder.Game
             DecreasseHunger();
             hungerTimer.Start();
 
-            cleanTimer = new Timer(10000);
+            cleanTimer = new Timer(1000);
             cleanTimer.Elapsed += (sender, e) =>
             DecresseClean();
             cleanTimer.Start();
+
+            healthTimer = new Timer(1000);
+            healthTimer.Elapsed += (sender, e) =>
+            DecreasseHealth();
+            healthTimer.Start();
         }
 
 
 
-        public void Health()
+        public void DecreasseHealth()
         {
-            health -= 1;
-            if (health < 0)
+            if (hunger == 0)
             {
-                health = 0;
+                health -= 5;
+                OnHealthChanged?.Invoke();
             }
+            if (health < 0)
+                health = 0;
+            
         }
 
         public void DecreasseHunger()
@@ -106,12 +115,12 @@ namespace Fränder.Game
 
         public string GetImage()
         {
-            if (hunger >= 60)
+            if (hunger >= 75)
                 return "hunger.png";
 
-            else if (hunger >= 59)
+            else if (hunger >= 50)
                 return "hunger_med.png";
-            else if (hunger >= 10)
+            else if (hunger >= 1)
                 return "hunger_low.png";
             else
                 return "hunger_empty.png";
@@ -119,14 +128,26 @@ namespace Fränder.Game
 
         public string GetCleanImage()
         {
-            if (clenlines >= 60)
+            if (clenlines >= 75)
                 return "clean_full.png";
-            else if (clenlines >= 59)
+            else if (clenlines >= 50)
                 return "clean_med.png";
-            else if (clenlines >= 10)
+            else if (clenlines >= 1)
                 return "clean_low.png";
             else
                 return "clean_empty.png";
+        }
+
+        public string GetHealthImage()
+        {
+            if (health >= 75)
+                return "liv_full.png";
+            else if (health >= 50)
+                return "liv_med.png";
+            else if (health >= 1)
+                return "liv_low.png";
+            else
+                return "liv_empty.png";
         }
     }
 

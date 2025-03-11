@@ -9,7 +9,7 @@
             Spacing="25"
             VerticalOptions="Center"
             HorizontalOptions="Center">
-            <Image Source="liv_full.png"
+            <Image x:Name="healthImage"
                    HeightRequest="96"
                    Aspect="AspectFit"
                    VerticalOptions="Center"

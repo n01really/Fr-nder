@@ -12,8 +12,10 @@ namespace Fränder
             InitializeComponent();
             needsLogic.OnHungerChanged += UpdateHungerImage;
             needsLogic.OnCleanChanged += UpdateCleanImage;
+            needsLogic.OnHealthChanged += UpdateHealthImage;
             UpdateHungerImage();
             UpdateCleanImage();
+            UpdateHealthImage();
         }
         private void UpdateHungerImage()
         {
@@ -28,6 +30,14 @@ namespace Fränder
             Device.BeginInvokeOnMainThread(() =>
             {
                 cleanImage.Source = needsLogic.GetCleanImage();
+            });
+        }
+
+        private void UpdateHealthImage()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                healthImage.Source = needsLogic.GetHealthImage();
             });
         }
 
