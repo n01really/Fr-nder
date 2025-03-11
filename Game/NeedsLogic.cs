@@ -45,7 +45,7 @@ namespace Fränder.Game
 
         public event Action OnHungerChanged;
         public event Action OnCleanChanged;
-        
+
         public NeedsLogic()
         {
             hungerTimer = new Timer(1000);
@@ -74,13 +74,13 @@ namespace Fränder.Game
         {
             hunger -= 1;
             if (hunger < 0) hunger = 0;
-                OnHungerChanged?.Invoke();
-            
+            OnHungerChanged?.Invoke();
+
         }
 
         public void Sleep()
         {
-            sleepines +=1;
+            sleepines += 1;
             if (sleepines < 100)
             {
                 sleepines = 100;
@@ -106,24 +106,24 @@ namespace Fränder.Game
 
         public string GetImage()
         {
-            if (hunger >= 67)
+            if (hunger >= 60)
                 return "hunger.png";
-            
-            else if (hunger == 34)
+
+            else if (hunger >= 59)
                 return "hunger_med.png";
-            else if (hunger == 10)
+            else if (hunger >= 10)
                 return "hunger_low.png";
-            else  
+            else
                 return "hunger_empty.png";
         }
 
         public string GetCleanImage()
         {
-            if (clenlines >= 67)
+            if (clenlines >= 60)
                 return "clean_full.png";
-            else if (clenlines == 34)
+            else if (clenlines >= 59)
                 return "clean_med.png";
-            else if (clenlines == 10)
+            else if (clenlines >= 10)
                 return "clean_low.png";
             else
                 return "clean_empty.png";

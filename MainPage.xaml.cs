@@ -5,12 +5,15 @@ namespace Fränder
     public partial class MainPage : ContentPage
     {
         private NeedsLogic needsLogic = new NeedsLogic();
+        
 
         public MainPage()
         {
             InitializeComponent();
             needsLogic.OnHungerChanged += UpdateHungerImage;
+            needsLogic.OnCleanChanged += UpdateCleanImage;
             UpdateHungerImage();
+            UpdateCleanImage();
         }
         private void UpdateHungerImage()
         {
