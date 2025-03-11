@@ -20,6 +20,14 @@ namespace Fränder
             });
         }
 
+        private void UpdateCleanImage()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                cleanImage.Source = needsLogic.GetCleanImage();
+            });
+        }
+
 
 
 

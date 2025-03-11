@@ -37,13 +37,37 @@
             </HorizontalStackLayout>
 
                    
-            <Image Source="clean_full.png"
+            <Image x:Name="cleanImage"
                    HeightRequest="120"
                    Aspect="AspectFit"
                    VerticalOptions="Center"
                    HorizontalOptions="Start"
                    SemanticProperties.Description="a image representing how clean your friend is, it is curently full"
                    />
+
+            <HorizontalStackLayout Spacing="25">
+                <ImageButton
+                    Source="buttonf.png"
+                    x:Name="Activity"
+                    HeightRequest="86"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    />
+                <ImageButton
+                    Source="buttonf.png"
+                    x:Name="Food"
+                    HeightRequest="86"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    />
+                <ImageButton
+                    Source="buttonf.png"
+                    x:Name="Sleep"
+                    HeightRequest="86"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    />
+            </HorizontalStackLayout>
 
 
             

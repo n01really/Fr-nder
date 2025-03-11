@@ -41,8 +41,10 @@ namespace Fränder.Game
         private int clenlines = 100;
 
         private Timer hungerTimer;
+        private Timer cleanTimer;
 
         public event Action OnHungerChanged;
+        public event Action OnCleanChanged;
         
         public NeedsLogic()
         {
@@ -50,7 +52,14 @@ namespace Fränder.Game
             hungerTimer.Elapsed += (sender, e) =>
             DecreasseHunger();
             hungerTimer.Start();
+
+            cleanTimer = new Timer(10000);
+            cleanTimer.Elapsed += (sender, e) =>
+            DecresseClean();
+            cleanTimer.Start();
         }
+
+
 
         public void Health()
         {
@@ -87,13 +96,12 @@ namespace Fränder.Game
             }
         }
 
-        public void clean()
+        public void DecresseClean()
         {
             clenlines -= 1;
-            if (clenlines < 0)
-            {
-                clenlines = 0;
-            }
+            if (clenlines < 0) clenlines = 0;
+            OnCleanChanged?.Invoke();
+
         }
 
         public string GetImage()
@@ -107,6 +115,18 @@ namespace Fränder.Game
                 return "hunger_low.png";
             else  
                 return "hunger_empty.png";
+        }
+
+        public string GetCleanImage()
+        {
+            if (clenlines >= 67)
+                return "clean_full.png";
+            else if (clenlines == 34)
+                return "clean_med.png";
+            else if (clenlines == 10)
+                return "clean_low.png";
+            else
+                return "clean_empty.png";
         }
     }
 
