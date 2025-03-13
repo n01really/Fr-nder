@@ -6,71 +6,18 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
-            Spacing="25"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">
-            <Image x:Name="healthImage"
-                   HeightRequest="96"
-                   Aspect="AspectFit"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Start"
-                   SemanticProperties.Description="A white cross representing your friends health"
-                   />
-            <HorizontalStackLayout Spacing="25">
-                <Image x:Name="hungerImage"
-                      
-                   HeightRequest="120"
-                   Aspect="AspectFit"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Start"
-                   SemanticProperties.Description="a image representing how hungry your friend is, it is curently full"
-                       />
-
-                <Image
-                Source="frander.png"
-                HeightRequest="250"
-                Aspect="AspectFit"
-                SemanticProperties.Description="your friendly Fränd stearing blankly back at you" 
-
-                />
-
-            </HorizontalStackLayout>
-
-                   
-            <Image x:Name="cleanImage"
-                   HeightRequest="120"
-                   Aspect="AspectFit"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Start"
-                   SemanticProperties.Description="a image representing how clean your friend is, it is curently full"
-                   />
-
-            <HorizontalStackLayout Spacing="25">
-                <ImageButton
-                    Source="buttonf.png"
-                    x:Name="Activity"
-                    HeightRequest="86"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Start"
-                    />
-                <ImageButton
-                    Source="buttonf.png"
-                    x:Name="Food"
-                    HeightRequest="86"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    />
-                <ImageButton
-                    Source="buttonf.png"
-                    x:Name="Sleep"
-                    HeightRequest="86"
-                    VerticalOptions="Center"
-                    HorizontalOptions="End"
-                    />
-            </HorizontalStackLayout>
+            Spacing="25">
 
 
-            
+            <Label
+                Text="Hello and welcom to Fränder"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Button Text="New Game"
+                    Clicked="OnNavigateClicked"/>
+            <Button Text="Quit Game"
+                    Clicked="OnClickedQuitGame"/>
         </VerticalStackLayout>
     </ScrollView>
 

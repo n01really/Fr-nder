@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fränder.MainGamePage"
+             Title="MainGamePage">
+    <ContentPage Title="Hem">
+        <ScrollView>
+            <VerticalStackLayout Padding="30,0" 
+                                 Spacing="25" 
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="Center">
+                <Image x:Name="healthImage" 
+                       HeightRequest="96" 
+                       Aspect="AspectFit" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Start"
+                   SemanticProperties.Description="A white cross representing your friend's health"/>
+
+                <HorizontalStackLayout Spacing="25">
+                    <Image x:Name="hungerImage" 
+                           HeightRequest="120" Aspect="AspectFit" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Start"
+                       SemanticProperties.Description="An image representing how hungry your friend is, currently full"/>
+
+                    <Image Source="frander.png" 
+                           HeightRequest="250" 
+                           Aspect="AspectFit"
+                       SemanticProperties.Description="Your friendly Fränd staring blankly back at you"/>
+                </HorizontalStackLayout>
+
+                <Image x:Name="cleanImage" 
+                       HeightRequest="120" 
+                       Aspect="AspectFit" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Start"
+                   SemanticProperties.Description="An image representing how clean your friend is, currently full"/>
+
+                <HorizontalStackLayout Spacing="25">
+                    <ImageButton Source="buttonf.png" 
+                                 x:Name="Activity" HeightRequest="86" 
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="Start"/>
+                    <ImageButton Source="buttonf.png" 
+                                 x:Name="Food" HeightRequest="86" 
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="Center"/>
+                    <ImageButton Source="buttonf.png" 
+                                 x:Name="Sleep" 
+                                 HeightRequest="86" 
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="End"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>
+
+    <!-- Andra fliken -->
+    <ContentPage Title="Mat">
+        <StackLayout Padding="20">
+            <Label Text="Mat" FontSize="24" HorizontalOptions="Center"/>
+            <Button Text="Mata Fränd" />
+        </StackLayout>
+    </ContentPage>
+
+    <!-- Tredje fliken -->
+    <ContentPage Title="Sömn">
+        <StackLayout Padding="20">
+            <Label Text="Sömn" FontSize="24" HorizontalOptions="Center"/>
+            <Button Text="Låt Fränd sova"/>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

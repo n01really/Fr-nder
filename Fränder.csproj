@@ -79,13 +79,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\MainTabbedPage.xaml.cs">
-	    <DependentUpon>MainTabbedPage.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Views\MainTabbedPage.xaml">
+	  <MauiXaml Update="Views\MainGamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

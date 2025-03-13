@@ -125,7 +125,7 @@ namespace Fränder.Game
             else if (health >= 1)
                 return "liv_low.png";
             else
-                return "liv_empty.png";
+                return "liv_dead.png";
         }
     }
 

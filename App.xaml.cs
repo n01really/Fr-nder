@@ -5,7 +5,7 @@
         public App()
         {
             InitializeComponent();
-            MainPage = new MainTabbedPage();
+
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

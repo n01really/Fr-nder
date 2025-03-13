@@ -1,50 +1,29 @@
 ﻿using Fränder.Game;
+using System.Threading.Tasks;
+
 
 namespace Fränder
 {
     public partial class MainPage : ContentPage
     {
-        private NeedsLogic needsLogic = new NeedsLogic();
+        
         
 
         public MainPage()
         {
             InitializeComponent();
-            needsLogic.OnHungerChanged += UpdateHungerImage;
-            needsLogic.OnCleanChanged += UpdateCleanImage;
-            needsLogic.OnHealthChanged += UpdateHealthImage;
-            UpdateHungerImage();
-            UpdateCleanImage();
-            UpdateHealthImage();
+
         }
-        private void UpdateHungerImage()
+
+        private async void OnNavigateClicked(object sender, EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                hungerImage.Source = needsLogic.GetImage();
-            });
+            await Navigation.PushAsync(new MainGamePage());
         }
 
-        private void UpdateCleanImage()
+        private void OnClickedQuitGame(object sender, EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                cleanImage.Source = needsLogic.GetCleanImage();
-            });
+            System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
         }
-
-        private void UpdateHealthImage()
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                healthImage.Source = needsLogic.GetHealthImage();
-            });
-        }
-
-
-
-
-
     }
 
 }
