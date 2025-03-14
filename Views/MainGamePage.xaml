@@ -63,10 +63,14 @@
     </ContentPage>
 
     <!-- Andra fliken -->
-    <ContentPage Title="Mat">
+    <ContentPage Title="Mat Shop">
         <StackLayout Padding="20">
             <Label Text="Mat" FontSize="24" HorizontalOptions="Center"/>
-            <Button Text="Mata Fränd" />
+
+            <!-- Dynamiska knappar för matvaror -->
+            <StackLayout x:Name="FoodButtonsLayout" Spacing="10">
+                <!-- Dynamiska knappar kommer att läggas till här -->
+            </StackLayout>
         </StackLayout>
     </ContentPage>
 

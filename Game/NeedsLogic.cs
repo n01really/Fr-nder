@@ -8,7 +8,7 @@ using Timer = System.Timers.Timer;
 
 namespace Fränder.Game
 {
-    internal class NeedsLogic
+    public class NeedsLogic
     {
 
 
@@ -22,11 +22,13 @@ namespace Fränder.Game
         private Timer hungerTimer;
         private Timer cleanTimer;
         private Timer healthTimer;
+        private Timer sleepTimer;
 
         public event Action OnHungerChanged;
         public event Action OnCleanChanged;
         public event Action OnHealthChanged;
         public event Action OnMoneyChanged;
+        public event Action OnSleepChanged;
         public NeedsLogic()
         {
             hungerTimer = new Timer(1000);
@@ -43,6 +45,22 @@ namespace Fränder.Game
             healthTimer.Elapsed += (sender, e) =>
             DecreasseHealth();
             healthTimer.Start();
+
+            sleepTimer = new Timer(1000);
+            sleepTimer.Elapsed += (sender, e) =>
+            IncreasseSleep();
+            healthTimer.Start();
+        }
+
+        public void TriggerHungerChanged()
+        {
+            OnHungerChanged?.Invoke();
+        }
+
+        // Metod för att trigga money-händelsen
+        public void TriggerMoneyChanged()
+        {
+            OnMoneyChanged?.Invoke();
         }
 
 
@@ -67,7 +85,7 @@ namespace Fränder.Game
 
         }
 
-        public void Sleep()
+        public void IncreasseSleep()
         {
             sleepines += 1;
             if (sleepines < 100)
@@ -95,7 +113,7 @@ namespace Fränder.Game
 
         public int GetMoney()
         {
-            Money += 1;
+            return Money;
         }
 
         public string GetImage()

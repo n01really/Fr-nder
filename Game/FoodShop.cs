@@ -60,8 +60,9 @@ namespace Fränder.Game
 
                 // Minska pengar och uppdatera UI
                 _needsLogic.Money -= foodItem.Price;
-                _needsLogic.OnHungerChanged?.Invoke();
-                _needsLogic.OnMoneyChanged?.Invoke(); // Uppdatera pengar på UI
+
+                _needsLogic.TriggerHungerChanged();
+                _needsLogic.TriggerMoneyChanged();
 
                 Console.WriteLine($"Köpt {foodItem.Name}! Hungern är nu: {_needsLogic.hunger}");
                 return true;
