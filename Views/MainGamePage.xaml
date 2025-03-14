@@ -4,11 +4,18 @@
              x:Class="Fränder.MainGamePage"
              Title="MainGamePage">
     <ContentPage Title="Hem">
+
         <ScrollView>
+            
             <VerticalStackLayout Padding="30,0" 
                                  Spacing="25" 
                                  VerticalOptions="Center" 
                                  HorizontalOptions="Center">
+                <Label x:Name="TemperatureLabel"
+               FontSize="20"
+               TextColor="White"
+               AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+               AbsoluteLayout.LayoutFlags="PositionProportional"/>
                 <Image x:Name="healthImage" 
                        HeightRequest="96" 
                        Aspect="AspectFit" 

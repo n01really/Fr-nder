@@ -17,6 +17,7 @@ namespace Fränder.Game
         private int sleepines = 0;
         private int fun = 100;
         private int clenlines = 100;
+        public int Money = 500;
 
         private Timer hungerTimer;
         private Timer cleanTimer;
@@ -25,6 +26,7 @@ namespace Fränder.Game
         public event Action OnHungerChanged;
         public event Action OnCleanChanged;
         public event Action OnHealthChanged;
+        public event Action OnMoneyChanged;
         public NeedsLogic()
         {
             hungerTimer = new Timer(1000);
@@ -89,6 +91,11 @@ namespace Fränder.Game
             if (clenlines < 0) clenlines = 0;
             OnCleanChanged?.Invoke();
 
+        }
+
+        public int GetMoney()
+        {
+            Money += 1;
         }
 
         public string GetImage()
