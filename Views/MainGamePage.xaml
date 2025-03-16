@@ -11,11 +11,13 @@
                                  Spacing="25" 
                                  VerticalOptions="Center" 
                                  HorizontalOptions="Center">
+                <Label x:Name="FrandNameLabel"
+                       FontSize="24"
+                       TextColor="White"
+                       FontAttributes="Bold"/>
                 <Label x:Name="TemperatureLabel"
-               FontSize="20"
-               TextColor="White"
-               AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-               AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                 FontSize="20"
+                       TextColor="White"/>
                 <Image x:Name="healthImage" 
                        HeightRequest="96" 
                        Aspect="AspectFit" 
@@ -44,19 +46,7 @@
                    SemanticProperties.Description="An image representing how clean your friend is, currently full"/>
 
                 <HorizontalStackLayout Spacing="25">
-                    <ImageButton Source="buttonf.png" 
-                                 x:Name="Activity" HeightRequest="86" 
-                                 VerticalOptions="Center" 
-                                 HorizontalOptions="Start"/>
-                    <ImageButton Source="buttonf.png" 
-                                 x:Name="Food" HeightRequest="86" 
-                                 VerticalOptions="Center" 
-                                 HorizontalOptions="Center"/>
-                    <ImageButton Source="buttonf.png" 
-                                 x:Name="Sleep" 
-                                 HeightRequest="86" 
-                                 VerticalOptions="Center" 
-                                 HorizontalOptions="End"/>
+
                 </HorizontalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
@@ -65,6 +55,17 @@
     <!-- Andra fliken -->
     <ContentPage Title="Mat Shop">
         <StackLayout Padding="20">
+            <Label Text="Mat" FontSize="24" HorizontalOptions="Center"/>
+
+            <HorizontalStackLayout HorizontalOptions="FillAndExpand" Padding="0,0,20,0">
+                <Label Text="Money" FontSize="24"/>
+                <Label x:Name="MoneyLabel"
+                   FontSize="24"
+                   TextColor="Gold"
+                   FontAttributes="Bold"
+                   HorizontalOptions="EndAndExpand"/>
+            </HorizontalStackLayout>
+
             <Label Text="Mat" FontSize="24" HorizontalOptions="Center"/>
 
             <!-- Dynamiska knappar för matvaror -->
@@ -78,7 +79,71 @@
     <ContentPage Title="Sömn">
         <StackLayout Padding="20">
             <Label Text="Sömn" FontSize="24" HorizontalOptions="Center"/>
-            <Button Text="Låt Fränd sova"/>
+            <Label x:Name="SleepHoursLabel" Text="Sovtid: 1 timme" 
+               FontSize="18" HorizontalOptions="Center"/>
+
+            <Slider x:Name="SleepSlider" Minimum="1" Maximum="12" Value="1" 
+                ValueChanged="OnSleepSliderChanged"/>
+
+            <Button Text="Låt Fränd sova" Clicked="OnSleepButtonClicked"/>
         </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Graveyard">
+        <StackLayout Padding="20">
+            <Label Text="Här vilar dina gamla Fränder" FontSize="24" HorizontalOptions="Center"/>
+            <Button Text="Visa Graveyard" Clicked="OnShowGraveyardClicked"/>
+            <ScrollView>
+                <VerticalStackLayout x:Name="GraveyardListLayout" Spacing="10"/>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Jobb">
+        <VerticalStackLayout Padding="30"
+                     Spacing="25">
+            <Label Text="Jobb: Servitör, lön 10"/>
+            <ImageButton x:Name="servitör"
+                         Source="buttonf.png"
+                         HeightRequest="20"
+                         Clicked="OnServitorClicked"/>
+            
+            <Label Text="Jobb: Influencer, Lön 0"/>
+            <ImageButton x:Name="Influenser" 
+                         Source="buttonf.png"
+                         HeightRequest="20"
+                         Clicked="OnInfluencerClicked"/>
+            
+            <Label Text="Jobb: Bygg Arbetare, Lön 30"/>
+            <ImageButton x:Name="ByggArbetare" 
+                         Source="buttonf.png"
+                         HeightRequest="20"
+                         Clicked="OnWorkClicked"/>
+            
+            <Label Text="Jobb: SystemUtvecklare, Lön 100"/>
+            <ImageButton x:Name="SystemUvecklare" 
+                         Source="buttonf.png"
+                         HeightRequest="20"
+                         Clicked="OnDeveloperClicked"/>
+
+        </VerticalStackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Badrum">
+        <VerticalStackLayout 
+            Padding="30"
+            Spacing="25">
+            <Label Text="Duscha"/>
+            <ImageButton 
+                Source="buttonf.png"
+                x:Name="Dusch"
+                Clicked="OnDuschButtonClicked"
+                HeightRequest="20"/>
+            <Label Text="Bada"/>
+            <ImageButton 
+                HeightRequest="20"
+                Source="buttonf.png"
+                x:Name="Bada"
+                Clicked="OnBadaButtonClicked"/>
+        </VerticalStackLayout>
     </ContentPage>
 </TabbedPage>
