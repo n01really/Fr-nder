@@ -25,7 +25,7 @@ public partial class MainGamePage : TabbedPage
         needsLogic.OnCleanChanged += UpdateCleanImage;
         needsLogic.OnHealthChanged += UpdateHealthImage;
         needsLogic.OnMoneyChanged += UpdateMoneyDisplay;
-        needsLogic.OnHealthChanged += CheckIfFrandDied;
+        //needsLogic.OnHealthChanged += CheckIfFrandDied;
 
         UpdateHungerImage();
         UpdateCleanImage();
@@ -48,15 +48,29 @@ public partial class MainGamePage : TabbedPage
         });
     }
 
-    private void CheckIfFrandDied()
-    {
-        if (needsLogic.IsDead)
-        {
-            GraveYard.MarkAsDead(frandName);
-            DisplayAlert("Din Fränd har dött", $"{frandName} har gått bort...", "OK");
-            Navigation.PopToRootAsync(); // Gå tillbaka till startmenyn
-        }
-    }
+    //private async void CheckIfFrandDied()
+    //{
+    //    try
+    //    {
+    //        if (needsLogic.IsDead)
+    //        {
+    //            if (!string.IsNullOrEmpty(frandName))
+    //            {
+    //                GraveYard.MarkAsDead(frandName);
+    //                await DisplayAlert("Din Fränd har dött", $"{frandName} har gått bort...", "OK");
+    //                await Navigation.PopToRootAsync(); // Gå tillbaka till startmenyn
+    //            }
+    //            else
+    //            {
+    //                await DisplayAlert("Error", "Frand name is null or empty.", "OK");
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        await DisplayAlert("Error", $"An error occurred: {ex.Message}", "OK");
+    //    }
+    //}
 
 
     private void InitializeFoodButtons()

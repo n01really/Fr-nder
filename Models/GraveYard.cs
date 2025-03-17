@@ -31,14 +31,14 @@ namespace Fränder.Models
             });
         }
 
-        public static void MarkAsDead(string name)
-        {
-            var frand = frandList.Find(f => f.Name == name && f.Died == null);
-            if (frand != null)
-            {
-                frand.Died = DateTime.Now;
-            }
-        }
+        //public static void MarkAsDead(string name)
+        //{
+        //    var frand = frandList.Find(f => f.Name == name && f.Died == null);
+        //    if (frand != null)
+        //    {
+        //        frand.Died = DateTime.Now;
+        //    }
+        //}
 
         public static List<FrandRecord> GetAllFrands()
         {
