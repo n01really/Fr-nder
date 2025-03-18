@@ -25,10 +25,10 @@ namespace Fränder.Game
 
             // Initialisera lista med matvaror
             _foodItems = new List<FoodItem>
-            {
-                new FoodItem("Billig Mat", 10, 20), // Billig mat
-                new FoodItem("Dyr Mat", 30, 50)     // Dyr mat
-            };
+                {
+                    new FoodItem("Billig Mat", 10, 20), // Billig mat
+                    new FoodItem("Dyr Mat", 30, 50)     // Dyr mat
+                };
         }
 
         // Offentlig statisk egenskap för att få den unika instansen

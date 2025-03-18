@@ -7,15 +7,12 @@ namespace Fränder
 {
     public partial class MainPage : ContentPage
     {
-        
-        
-
         public MainPage()
         {
             InitializeComponent();
-
         }
 
+        // Hanterar klickhändelsen för navigeringsknappen
         private async void OnNavigateClicked(object sender, EventArgs e)
         {
             string frandName = NameEntry.Text?.Trim();
@@ -26,15 +23,17 @@ namespace Fränder
                 return;
             }
 
-
             // Skapa en ny Fränd och spara i GraveYard
             GraveYard.AddFrand(frandName);
 
+            // Navigera till MainGamePage med frandName som parameter
             await Navigation.PushAsync(new MainGamePage(frandName));
         }
 
+        // Hanterar klickhändelsen för att avsluta spelet
         private void OnClickedQuitGame(object sender, EventArgs e)
         {
+            // Stänger huvudfönstret och avslutar applikationen
             System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
         }
     }

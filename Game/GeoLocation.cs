@@ -13,8 +13,10 @@ namespace Fränder.Game
         private bool _isCheckingLocation;
         private string _locationInfo;
 
+        // Händelse som triggas när en egenskap ändras
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // Egenskap för platsinformation
         public string LocationInfo
         {
             get => _locationInfo;
@@ -25,6 +27,7 @@ namespace Fränder.Game
             }
         }
 
+        // Hämtar den aktuella platsen
         public async Task GetCurrentLocation()
         {
             try
@@ -65,18 +68,23 @@ namespace Fränder.Game
             }
         }
 
+        // Avbryter platsförfrågan
         public void CancelRequest()
         {
             if (_isCheckingLocation && _cancelTokenSource != null && !_cancelTokenSource.IsCancellationRequested)
                 _cancelTokenSource.Cancel();
         }
 
+        // Egenskap som indikerar om platsen kontrolleras
         public bool IsCheckingLocation => _isCheckingLocation;
 
+        // Triggar PropertyChanged-händelsen
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        // Hämtar koordinaterna (latitud och longitud) asynkront
         public async Task<(double Latitude, double Longitude)> GetCoordinatesAsync()
         {
             try
@@ -100,6 +108,5 @@ namespace Fränder.Game
 
             return (0, 0); // Returnera 0,0 om vi misslyckas
         }
-
     }
 }

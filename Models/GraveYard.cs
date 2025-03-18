@@ -16,11 +16,12 @@ namespace Fränder.Models
         {
             public string Name { get; set; }
             public DateTime Created { get; set; }
-            public DateTime? Died { get; set; } // Null om Fränden fortfarande lever
+            public DateTime? Died { get; set; } 
         }
 
         private static List<FrandRecord> frandList = new();
 
+        //Lägger till en ny Fränd i listan
         public static void AddFrand(string name)
         {
             frandList.Add(new FrandRecord
@@ -40,6 +41,7 @@ namespace Fränder.Models
         //    }
         //}
 
+        //Hämtar alla Fränder från listan
         public static List<FrandRecord> GetAllFrands()
         {
             return frandList;

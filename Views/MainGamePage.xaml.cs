@@ -7,25 +7,24 @@ public partial class MainGamePage : TabbedPage
 {
     private NeedsLogic needsLogic;
     private string frandName;
-    //private Graveyard graveyard;
     private DateTime birthDate;
 
     private readonly WeatherService.WeatherService _weatherService;
     private readonly GeoLocation _geoLocation;
     private FoodShop _foodShop;
+
+    // Konstruktor för MainGamePage, initialiserar nödvändiga komponenter och logik
     public MainGamePage(string name)
     {
         InitializeComponent();
         frandName = name;
         needsLogic = new NeedsLogic(frandName);
         birthDate = DateTime.Now;
-        //graveyard = new Graveyard();
 
         needsLogic.OnHungerChanged += UpdateHungerImage;
         needsLogic.OnCleanChanged += UpdateCleanImage;
         needsLogic.OnHealthChanged += UpdateHealthImage;
         needsLogic.OnMoneyChanged += UpdateMoneyDisplay;
-        //needsLogic.OnHealthChanged += CheckIfFrandDied;
 
         UpdateHungerImage();
         UpdateCleanImage();
@@ -33,13 +32,13 @@ public partial class MainGamePage : TabbedPage
         UpdateFrandName();
         UpdateMoneyDisplay();
 
-
         _foodShop = FoodShop.Instance(needsLogic);
 
         _weatherService = new WeatherService.WeatherService();
         _geoLocation = new GeoLocation();
     }
 
+    // Uppdaterar Frändens namn på huvudtråden
     private void UpdateFrandName()
     {
         Device.BeginInvokeOnMainThread(() =>
@@ -72,7 +71,7 @@ public partial class MainGamePage : TabbedPage
     //    }
     //}
 
-
+    // Initialiserar matknapparna i layouten
     private void InitializeFoodButtons()
     {
         FoodButtonsLayout.Children.Clear();
@@ -105,6 +104,7 @@ public partial class MainGamePage : TabbedPage
         }
     }
 
+    // Uppdaterar hungerbilden på huvudtråden
     private void UpdateHungerImage()
     {
         Device.BeginInvokeOnMainThread(() =>
@@ -113,6 +113,7 @@ public partial class MainGamePage : TabbedPage
         });
     }
 
+    // Uppdaterar renhetsbilden på huvudtråden
     private void UpdateCleanImage()
     {
         Device.BeginInvokeOnMainThread(() =>
@@ -121,6 +122,7 @@ public partial class MainGamePage : TabbedPage
         });
     }
 
+    // Uppdaterar hälsobilden på huvudtråden
     private void UpdateHealthImage()
     {
         Device.BeginInvokeOnMainThread(() =>
@@ -129,6 +131,7 @@ public partial class MainGamePage : TabbedPage
         });
     }
 
+    // Uppdaterar pengavisningen på huvudtråden
     private void UpdateMoneyDisplay()
     {
         Device.BeginInvokeOnMainThread(() =>
@@ -139,12 +142,16 @@ public partial class MainGamePage : TabbedPage
             }
         });
     }
+
+    // Körs när sidan visas, hämtar väder och initialiserar matknappar
     protected override async void OnAppearing()
     {
         base.OnAppearing();
         await GetWeatherAutomatically();
         InitializeFoodButtons();
     }
+
+    // Hämtar väderinformation automatiskt baserat på koordinater
     private async Task GetWeatherAutomatically()
     {
         try
@@ -162,7 +169,7 @@ public partial class MainGamePage : TabbedPage
 
             if (weather != null)
             {
-               TemperatureLabel.Text = $"{weather.Temp}°C"; 
+                TemperatureLabel.Text = $"{weather.Temp}°C";
             }
             else
             {
@@ -174,48 +181,59 @@ public partial class MainGamePage : TabbedPage
             TemperatureLabel.Text = "Fel";
         }
     }
+
     private int sleepHours = 1;
+
+    // Hanterar förändring av sovtid via en slider
     private void OnSleepSliderChanged(object sender, ValueChangedEventArgs e)
     {
         sleepHours = (int)e.NewValue;
         SleepHoursLabel.Text = $"Sovtid: {sleepHours} timmar";
     }
 
+    // Hanterar klickhändelse för sovknappen
     private void OnSleepButtonClicked(object sender, EventArgs e)
     {
         needsLogic.StartSleeping(sleepHours);
     }
 
+    // Hanterar klickhändelse för att visa kyrkogården
     private void OnShowGraveyardClicked(object sender, EventArgs e)
     {
         //Borttagen pga crashar när försöker spara till fil
     }
 
+    // Hanterar klickhändelse för servitorknappen
     private void OnServitorClicked(object sender, EventArgs e)
     {
         needsLogic.Servitor();
     }
 
+    // Hanterar klickhändelse för influencerkknappen
     private void OnInfluencerClicked(object sender, EventArgs e)
     {
         needsLogic.Influenser();
     }
 
+    // Hanterar klickhändelse för arbetsknappen
     private void OnWorkClicked(object sender, EventArgs e)
     {
         needsLogic.Worker();
     }
 
+    // Hanterar klickhändelse för utvecklarknappen
     private void OnDeveloperClicked(object sender, EventArgs e)
     {
         needsLogic.Programer();
     }
 
+    // Hanterar klickhändelse för duschknappen
     private void OnDuschButtonClicked(object sender, EventArgs e)
     {
         needsLogic.Duscha();
     }
 
+    // Hanterar klickhändelse för badknappen
     private void OnBadaButtonClicked(object sender, EventArgs e)
     {
         needsLogic.Bada();

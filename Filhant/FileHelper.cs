@@ -8,10 +8,11 @@ namespace Fränder.Filhant
 {
     class FileHelper
     {
+        // Definierar sökvägen till spelfilsmappen och graveyard-filen
         private static readonly string GameDirectory = Path.Combine(FileSystem.AppDataDirectory, "GameFiles");
         private static readonly string GraveyardFilePath = Path.Combine(GameDirectory, "graveyard.txt");
 
-        // Skapa mappen om den inte redan finns
+        // Skapar mappen om den inte redan finns
         public static void CreateGameDirectory()
         {
             try
@@ -28,7 +29,7 @@ namespace Fränder.Filhant
             }
         }
 
-        // Spara en lista av strängar till filen (t.ex. Graveyard-lista)
+        // Sparar en lista av strängar till filen (t.ex. Graveyard-lista)
         public static async Task SaveListToFileAsync(List<string> dataList)
         {
             try
@@ -46,7 +47,7 @@ namespace Fränder.Filhant
             }
         }
 
-        // Läs data från filen
+        // Läser data från filen
         public static async Task<List<string>> ReadListFromFileAsync()
         {
             try
