@@ -169,15 +169,18 @@ public partial class MainGamePage : TabbedPage
 
             if (weather != null)
             {
-                TemperatureLabel.Text = $"{weather.Temp}°C";
+                // Logga temperaturen för felsökning
+                TemperatureLabel.Text = weather.Temp + "°C";
             }
             else
             {
                 TemperatureLabel.Text = "API fel";
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            // Logga felet för felsökning
+            Console.WriteLine($"Fel: {ex.Message}");
             TemperatureLabel.Text = "Fel";
         }
     }

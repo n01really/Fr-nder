@@ -43,7 +43,7 @@ namespace Fränder.Game
 
         public GameState CurrentGameState { get; private set; } = GameState.Alive;
 
-        //public bool IsDead => health <= 0;
+        //public bool Dead => health <= 0;
 
         private string frandName;
 

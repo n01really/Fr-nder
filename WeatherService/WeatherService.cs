@@ -32,22 +32,23 @@ namespace Fränder.WeatherService
 
             try
             {
-                // Skickar en GET-förfrågan till API:et
                 var response = await _httpClient.GetAsync(url);
 
-                // Kontrollera om förfrågan lyckades
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new Exception($"Fel vid hämtning av data: {response.ReasonPhrase}");
                 }
 
-                // Läser och deserialiserar JSON-svaret till en Weather-objekt
                 var json = await response.Content.ReadAsStringAsync();
-                return JsonSerializer.Deserialize<Weather>(json);
+                Console.WriteLine($"JSON-svar: {json}"); // Logga JSON-svaret
+
+                var weather = JsonSerializer.Deserialize<Weather>(json);
+                Console.WriteLine($"Deserialiserad temp: {weather?.Temp}"); // Logga deserialiserad temperatur
+
+                return weather;
             }
             catch (Exception ex)
             {
-                // Loggar eventuella fel
                 Console.WriteLine($"Fel: {ex.Message}");
                 return null;
             }

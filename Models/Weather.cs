@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace Fränder.Models
 {
-    class Weather
+    public class Weather
     {
-        // Temperatur i grader Celsius
+        [JsonPropertyName("temp")]
         public float Temp { get; set; }
 
-        // Upplevd temperatur i grader Celsius
+        [JsonPropertyName("feels_like")]
         public float FeelsLike { get; set; }
 
-        // Luftfuktighet i procent
+        [JsonPropertyName("humidity")]
         public float Humidity { get; set; }
 
-        // Vindhastighet i meter per sekund
+        [JsonPropertyName("wind_speed")]
         public float WindSpeed { get; set; }
     }
 }

@@ -28,6 +28,7 @@ namespace Fränder.Game
                 {
                     new FoodItem("Billig Mat", 10, 20), // Billig mat
                     new FoodItem("Dyr Mat", 30, 50)     // Dyr mat
+                    //new FoodItem("test", 30, 50)     
                 };
         }
 
